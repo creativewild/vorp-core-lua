@@ -9,12 +9,12 @@ shared_scripts {
 
 client_scripts {
   'client/Notifications.js',
-  'client/cl_*.lua',
+  'client/*.lua',
 }
 
 server_scripts {
-  'server/class/sv_*.lua',
-  'server/sv_*.lua',
+  'server/classes/*.lua',
+  'server/*.lua',
 }
 
 server_exports {'vorpAPI'}

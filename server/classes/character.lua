@@ -249,7 +249,7 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
     end
 
     self.SaveCharacterInDb = function()
-        exports.ghmattimysql:execute("UPDATE characters SET `group` = ?,`money` = ?,`gold` = ?,`rol` = ?,`xp` = ?,`job` = ?, `status` = ?,`firstname` = ?, `lastname` = ?, `jobgrade` = ?,`coords` = ?,`isdead` = ? WHERE `identifier` = ? AND `charidentifier` = ?", {self.Group(), self.Money(), self.Gold(), self.Rol(), self.Xp(), self.Job(), self.Status(), self.Firstname(), self.Lastname(), self.Jobgrade(), self.Coords(), self.IsDead(), self.Identifier(), self.CharIdentifier()})
+        exports.ghmattimysql:execute("UPDATE characters SET `group` = ?,`money` = ?,`gold` = ?,`rol` = ?,`xp` = ?,`job` = ?, `status` = ?,`firstname` = ?, `lastname` = ?, `jobgrade` = ?,`coords` = ?,`isdead` = ? WHERE `identifier` = ? AND `charidentifier` = ?", {self.Group(), self.Money(), self.Gold(), self.Rol(), self.Xp(), self.Job(), self.Status(), self.Firstname(), self.Lastname(), self.Jobgrade(), self.Coords(), self.IsDead(), tostring(self.Identifier()), self.CharIdentifier()})
     end
 
     return self
