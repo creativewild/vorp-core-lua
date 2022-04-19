@@ -4,6 +4,33 @@
 
 Config = {
 
+  log = {
+    file = {
+      enabled = true,
+      debugInfo = false
+    },
+    discord = {
+      username = "VORP Logs",
+      webhooks = {
+        ["default"] = "https://discord.com/api/webhooks/964861207498604626/S5iSSdps_AfQ9fCvOwqKKkSloVoUCDgEsFlmncgDgcgj4C5o2SFDr-e1qwfIhze_QFZJ",
+        ["admincommands"] = "",
+      },
+      colors = {
+        ["default"] = 16711680,
+        ["red"] = 16711680,
+        ["blue"] = 25087,
+        ["turqois"] = 62207,
+        ["lightgreen"] = 65309,	
+        ["green"] = 762640,
+        ["orange"] = 16743168,
+        ["yellow"] = 15335168,
+        ["pink"] = 16711900,
+        ["white"] = 16777215,
+        ["black"] = 0,
+      }
+    }
+  },
+
   ----------------------------------------------------------------------------
   ----------------------- STARTING POINT -------------------------------------
   initGold     =  0.0, 
@@ -16,7 +43,7 @@ Config = {
   Whitelist     =  false, -- LEAVE TO FALSE IT'S NOT WORKING
   AllowWhitelistAutoUpdate =  false,
   MaxCharacters =  5, --MAX ALLOWED TO BE CREATED
-  Permissions = {'superadmin', 'admin', 'mod'}
+  Permissions = {'superadmin', 'admin', 'mod'},
 
   ------------------------------------------------------------------------------
   ------------------------------ WEBHOOKS --------------------------------------

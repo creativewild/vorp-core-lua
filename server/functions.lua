@@ -1,4 +1,27 @@
--- Accepts steamid, license, discord, xbl, liveid, ip
+VorpCore = {}
+VorpCore.Player = {}
+VorpCore.Players = {}
+
+function GetPlayers()
+    local sources = {}
+    for k, v in pairs(VorpCore.Players) do
+        sources[#sources+1] = k
+    end
+    return sources
+end
+exports('GetPlayers', GetPlayers)
+
+-- Returns the entire player object
+exports('GetAllPlayers', function()
+    return VorpCore.Players
+end)
+
+function GetPlayer(source)
+    return VorpCore.Players[source]
+end
+
+
+-- you can use steamid, license, discord, xbl, liveid, ip as the idtype
 function GetIdentifier(source, idtype)
     if type(idtype) ~= "string" then return print('Invalid usage') end
     for _, identifier in pairs(GetPlayerIdentifiers(source)) do
@@ -8,7 +31,7 @@ function GetIdentifier(source, idtype)
     end
     return nil
 end
-exports('GetIdentifier', GetIdentifier)
+
 
 
 function AddPermission(source, permission)
@@ -17,7 +40,7 @@ function AddPermission(source, permission)
     ExecuteCommand(('add_principal identifier.%s vorp.%s'):format(license, permission))
     RefreshCommands(src)
 end
-exports('AddPermission', AddPermission)
+
 
 function RemovePermission(source, permission)
     local src = source
@@ -36,14 +59,14 @@ function RemovePermission(source, permission)
         end
     end
 end
-exports('RemovePermission', RemovePermission)
+
 
 function HasPermission(source, permission)
     local src = source
     if IsPlayerAceAllowed(src, permission) then return true end
     return false
 end
-exports('HasPermission', HasPermission)
+
 
 function GetPermissions(source)
     local src = source
@@ -55,4 +78,3 @@ function GetPermissions(source)
     end
     return perms
 end
-exports('GetPermissions', GetPermissions)

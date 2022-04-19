@@ -48,7 +48,7 @@ end)
 RegisterNetEvent('vorp:playerSpawn', function()
     local source = source
     local identifier = GetSteamID(source)
-
+    --RefreshCommands(source)
     _usersLoading[identifier] = false
     
     if _users[identifier] then

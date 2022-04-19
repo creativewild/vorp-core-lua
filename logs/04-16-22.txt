@@ -1,0 +1,7 @@
+-- Begin of log for 04-16-22 --
+Admin command addmoney
+Admin command addmoney: The user with ID 1 gave to the user ID 1 the amount of 1 of money type 150.
+Admin command addmoney: The user with ID 1 gave to the user ID 1 the amount of 100 of money type 1.
+Admin command addmoney: The user with ID 1 gave to the user ID 1 the amount of 1 of money type 1.
+Admin command addmoney: The user with ID 1 gave to the user ID 1 the amount of 0 of money type 100.
+Admin command addmoney: The user with ID 1 gave to the user ID 1 the amount of 100 of money type 0.

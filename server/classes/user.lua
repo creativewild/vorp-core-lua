@@ -128,7 +128,7 @@ function User(source, identifier, group, playerwarnings, license)
                 for k,character in ipairs(usercharacters) do
                     if character['identifier'] ~= nil then
                         local newCharacter = Character(self.source, self._identifier, character["charidentifier"], character["group"], character["job"], character["jobgrade"], character["firstname"], character["lastname"], character["inventory"], character["status"], character["coords"], character["money"], character["gold"], character["rol"], character["xp"], character["isdead"], character["skinPlayer"], character["compPlayer"])
-
+                        print(character["status"])
                         self._usercharacters[newCharacter.CharIdentifier()] = newCharacter
                         self.usedCharacterId = newCharacter.CharIdentifier()
                     end
@@ -175,6 +175,8 @@ function User(source, identifier, group, playerwarnings, license)
             character.SaveCharacterInDb()
         end
     end
+
+    VorpCore.Players[self.source] = self
 
     return self
 end

@@ -67,6 +67,9 @@ RegisterCommand("setjob", function(source, args, rawCommand)
 end, false)
 
 
+
+
+--[[
 RegisterCommand("addmoney", function(source, args, rawCommand)
     if source > 0 then -- it's a player.
         TriggerEvent("vorp:getCharacter", source, function(user)
@@ -85,6 +88,7 @@ RegisterCommand("addmoney", function(source, args, rawCommand)
         TriggerEvent("vorp:addMoney", target, montype, quantity)
     end
 end, false)
+]]
     
         
 RegisterCommand("delmoney", function(source, args, rawCommand)
@@ -208,6 +212,7 @@ end)
 
 ------------------------------------------------------------------------------------------------------
 ------------------------------------ TP TO MARKER ----------------------------------------------------
+--[[
 RegisterCommand("tpm", function(source, args)
     TriggerEvent("vorp:getCharacter", source, function(user)
         local _source = source
@@ -219,7 +224,7 @@ RegisterCommand("tpm", function(source, args)
         end
     end)
 end)
-
+]]
 
 ------------------------------------------------------------------------------------------------------
 -------------------------------------- DELETE WAGONS -------------------------------------------------
@@ -274,18 +279,20 @@ AddEventHandler("vorp:chatSuggestion",function()
         {name = "Job", help='Job Name'},
         {name = "Rank", help=' player Rank'},
     })
-
+--[[
     TriggerClientEvent("chat:addSuggestion",_source, "/addmoney", "VORPcore command add money/gold to user",{
         {name = "Id", help='player ID'},
         {name = "Type", help='Money 0 Gold 1'},
         {name = "Quantity", help='Quantity to give'},
     })
-
+]]
+    
     TriggerClientEvent("chat:addSuggestion", _source, "/delmoney", "VORPcore command remove money/gold from user",{
         {name = "Id", help='player ID'},
         {name = "Type", help='Money 0 Gold 1'},
         {name = "Quantity", help='Quantity to remove from User'},    
     })
+    
 
     TriggerClientEvent("chat:addSuggestion",_source, "/addwhitelist", "VORPcore command Example: /addwhitelist 11000010c8aa16e",{
         {name = "AddWhiteList", help=' steam ID like this > 11000010c8aa16e'},               
@@ -301,8 +308,8 @@ AddEventHandler("vorp:chatSuggestion",function()
         {name = "Id", help='player ID'},
     })
 
-    TriggerClientEvent("chat:addSuggestion",_source, "/tpm", " VORPcore command  teleport to marker set on the map.",{
-    })
+    --[[TriggerClientEvent("chat:addSuggestion",_source, "/tpm", " VORPcore command  teleport to marker set on the map.",{
+    })]]
 
     TriggerClientEvent("chat:addSuggestion",_source, "/delwagon", " VORPcore command to delete wagons.",{
     })

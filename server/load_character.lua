@@ -18,8 +18,9 @@ RegisterNetEvent('vorp:playerSpawn', function()
         if pos ~= nil and pos['x'] ~= nil then
             TriggerClientEvent("vorp:initPlayer", source, vector3(pos["x"], pos["y"], pos["z"]), pos["heading"], characters[sid].IsDead())
         end
-
+      
         characters[sid].source = source
+        RefreshCommands(source)
 
         -- Send Nui Update UI all
         characters[sid].updateCharUi()
