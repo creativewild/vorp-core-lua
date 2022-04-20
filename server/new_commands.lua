@@ -57,13 +57,6 @@ AddCommand('tpm', 'TP To Marker', {}, false, function(source)
     TriggerClientEvent('vorp:teleportWayPoint', _source)
 end, 'mod')
 
-AddCommand('addmoney', 'VORPcore command add money/gold to user', { {name = "Id", help='player ID'}, {name = "Type", help='Money 0 Gold 1'}, {name = "Quantity", help='Quantity to give'} }, true, function(source, args)
-    local _source = source
-    local target, montype, quantity = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
-    TriggerEvent("vorp:addMoney", target, montype, quantity)
-    TriggerClientEvent("vorp:Tip", _source, string.format("Added %s to %s", target, quantity), 4000)
-end, 'admin')
-
 AddCommand('setgroup', 'VORPcore command set group to user.', { {name = "Id", help='player ID'}, {name = "Group", help='Group Name'} }, true, function(source, args)
     local _source = source
     local target, newgroup = args[1], args[2]
@@ -72,7 +65,37 @@ AddCommand('setgroup', 'VORPcore command set group to user.', { {name = "Id", he
         return
     end
     TriggerEvent("vorp:setGroup", target, newgroup)
-    TriggerClientEvent("vorp:Tip", source, string.format("Target %s have group %s", target, newgroup), 4000)
+    TriggerClientEvent("vorp:Tip", _source, string.format("Target %s have group %s", target, newgroup), 4000)
+end, 'admin')
+
+AddCommand('setjob', 'VORPcore command set job to user.', { {name = "Id", help='player ID'},{name = "Job", help='Job Name'},{name = "Rank", help=' player Rank'} }, true, function(source, args)
+    local _source = source
+    local target, newjob, jobgrade = tonumber(args[1]), args[2], args[3]
+    if newjob == nil or newjob == '' then
+        if jobgrade == nil or jobgrade == '' then
+            TriggerClientEvent("vorp:Tip", source, "ERROR: Use Correct Sintaxis", 4000)
+            return
+        end
+    end
+    TriggerEvent("vorp:setJob", target, newjob, jobgrade)
+    TriggerClientEvent("vorp:Tip", _source, string.format("Target %s have new job %s", target, newjob), 4000)
+end, 'admin')
+
+
+
+
+AddCommand('addmoney', 'VORPcore command add money/gold to user', { {name = "Id", help='player ID'}, {name = "Type", help='Money 0 Gold 1'}, {name = "Quantity", help='Quantity to give'} }, true, function(source, args)
+    local _source = source
+    local target, montype, quantity = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
+    TriggerEvent("vorp:addMoney", target, montype, quantity)
+    TriggerClientEvent("vorp:Tip", _source, string.format("Added %s to %s", target, quantity), 4000)
+end, 'admin')
+
+AddCommand('delmoney', 'VORPcore command remove money/gold from user', { {name = "Id", help='player ID'}, {name = "Type", help='Money 0 Gold 1'}, {name = "Quantity", help='Quantity to remove from User'} }, true, function(source, args)
+    local _source = source
+    local target, montype, quantity = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
+    TriggerEvent("vorp:removeMoney", target, montype, quantity)
+    TriggerClientEvent("vorp:Tip", _source, string.format("Removed %s to %s", target, quantity), 4000)
 end, 'admin')
 
 

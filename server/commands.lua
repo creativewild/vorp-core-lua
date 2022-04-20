@@ -6,109 +6,8 @@
 -- WEBHOOK FOR EACH COMMAND 
 
 ------------------------------------- START ---------------------------------------
-
-RegisterCommand("setgroup", function(source, args, rawCommand)
-    if source > 0 then -- it's a player.
-        TriggerEvent("vorp:getCharacter", source, function(user)
-            if user.group == Config.Group.Admin or user.group == Config.Group.Mod then
-                local target, newgroup = args[1], args[2]
-
-                if newgroup == nil or newgroup == '' then
-                    TriggerClientEvent("vorp:Tip", source, "ERROR: Use Correct Sintaxis", 4000)
-                    return
-                end
-
-                TriggerEvent("vorp:setGroup", target, newgroup)
-                TriggerClientEvent("vorp:Tip", source, string.format("Target %s have group %s", target, newgroup), 4000)
-            else
-                TriggerClientEvent("vorp:Tip", source, Config.Langs["NoPermissions"], 4000)
-            end
-        end)
-    else
-        local target, newgroup = args[1], args[2]
-
-        if newgroup == nil or newgroup == '' then
-            print("ERROR: Use Correct Sintaxis")
-            return
-        end
-
-        TriggerEvent("vorp:setGroup", target, newgroup)
-    end
-end, false)
-
-
-RegisterCommand("setjob", function(source, args, rawCommand)
-    if source > 0 then -- it's a player.
-        TriggerEvent("vorp:getCharacter", source, function(user)
-             if user.group == Config.Group.Admin or user.group == Config.Group.Mod then
-                local target, newjob = args[1], args[2]
-
-                if newjob == nil or newjob == '' then
-                    TriggerClientEvent("vorp:Tip", source, "ERROR: Use Correct Sintaxis", 4000)
-                    return
-                end
-
-                TriggerEvent("vorp:setJob", target, newjob)
-                TriggerClientEvent("vorp:Tip", source, string.format("Target %s have new job %s", target, newjob), 4000)
-            else
-                TriggerClientEvent("vorp:Tip", source, Config.Langs["NoPermissions"], 4000)
-            end
-        end)
-    else
-        local target, newjob = args[1], args[2]
-
-        if newjob == nil or newjob == '' then
-           -- print("ERROR: Use Correct Sintaxis")
-            return
-        end
-
-        TriggerEvent("vorp:setJob", target, newjob)
-    end
-end, false)
-
-
-
-
---[[
-RegisterCommand("addmoney", function(source, args, rawCommand)
-    if source > 0 then -- it's a player.
-        TriggerEvent("vorp:getCharacter", source, function(user)
-             if user.group == Config.Group.Admin or user.group == Config.Group.Mod then
-                local target, montype, quantity = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
-
-                TriggerEvent("vorp:addMoney", target, montype, quantity)
-                TriggerClientEvent("vorp:Tip", source, string.format("Added %s to %s", target, quantity), 4000)
-            else
-                TriggerClientEvent("vorp:Tip", source, Config.Langs["NoPermissions"], 4000)
-            end
-        end)
-    else
-        local target, montype, quantity = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
-
-        TriggerEvent("vorp:addMoney", target, montype, quantity)
-    end
-end, false)
-]]
     
-        
-RegisterCommand("delmoney", function(source, args, rawCommand)
-    if source > 0 then -- it's a player.
-        TriggerEvent("vorp:getCharacter", source, function(user)
-             if user.group == Config.Group.Admin or user.group == Config.Group.Mod then
-                local target, montype, quantity = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
 
-                TriggerEvent("vorp:removeMoney", target, montype, quantity)
-                TriggerClientEvent("vorp:Tip", source, string.format("Removed %s to %s", target, quantity), 4000)
-            else
-                TriggerClientEvent("vorp:Tip", source, Config.Langs["NoPermissions"], 4000)
-            end
-        end)
-    else
-        local target, montype, quantity = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
-
-        TriggerEvent("vorp:removeMoney", target, montype, quantity)
-    end
-end, false)
         
         
 RegisterCommand("addwhitelist", function(source, args, rawCommand)
@@ -212,19 +111,6 @@ end)
 
 ------------------------------------------------------------------------------------------------------
 ------------------------------------ TP TO MARKER ----------------------------------------------------
---[[
-RegisterCommand("tpm", function(source, args)
-    TriggerEvent("vorp:getCharacter", source, function(user)
-        local _source = source
-     
-        if user.group == Config.Group.Admin or user.group == Config.Group.Mod then 
-            TriggerClientEvent('vorp:teleportWayPoint', _source)
-        else 
-            TriggerClientEvent("vorp:Tip", _source, Config.Langs["NoPermissions"], 4000)
-        end
-    end)
-end)
-]]
 
 ------------------------------------------------------------------------------------------------------
 -------------------------------------- DELETE WAGONS -------------------------------------------------
@@ -275,9 +161,7 @@ AddEventHandler("vorp:chatSuggestion",function()
     })
 
     TriggerClientEvent("chat:addSuggestion",_source, "/setjob", "VORPcore command set job to user.",{
-        {name = "Id", help='player ID'},
-        {name = "Job", help='Job Name'},
-        {name = "Rank", help=' player Rank'},
+        {name = "Id", help='player ID'},{name = "Job", help='Job Name'},{name = "Rank", help=' player Rank'},
     })
 --[[
     TriggerClientEvent("chat:addSuggestion",_source, "/addmoney", "VORPcore command add money/gold to user",{
