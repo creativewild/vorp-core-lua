@@ -44,51 +44,11 @@ end, false)
 
 ---------------------------------------------------------------------------------------------------
 ------------------------------------------ ADDITEM ------------------------------------------------
-RegisterCommand("additems", function(source, args)
-  
-    if args ~= nil then
-        TriggerEvent("vorp:getCharacter", source, function(user)
-            VORP = exports.vorp_inventory:vorp_inventoryApi()
-            local id =  args[1]
-            local item =  args[2]
-            local count =  args[3]
-
-            if user.group == Config.Group.Admin or user.group == Config.Group.Mod then
-                VORP.addItem(source, item, count)
-            else
-                TriggerClientEvent("vorp:Tip", source, Config.Langs["NoPermissions"], 4000)
-            end
-        end)
-    end
-end)
 
 ---------------------------------------------------------------------------------------------------
 ----------------------------------------- ADD WEAPON ----------------------------------------------
 
-RegisterCommand("addweapons", function(source, args)
 
-    if args ~= nil then
-        TriggerEvent("vorp:getCharacter", source, function(user)
-            local _source = source 
-            VORP = exports.vorp_inventory:vorp_inventoryApi()
-            local id = args[1]
-            local weaponHash = tostring(args[2])
-
-            TriggerEvent("vorpCore:canCarryWeapons", tonumber(id), 1, function(canCarry)
-                if canCarry then
-                    if user.group == Config.Group.Admin or user.group == Config.Group.Mod then
-                        VORP.createWeapon(tonumber(id), weaponHash)
-                       
-                    else 
-                        TriggerClientEvent("vorp:Tip", source, Config.Langs["NoPermissions"], 4000)
-                    end
-                else
-                  
-                   
-                    TriggerClientEvent("vorp:Tip", source, Config.Langs.cantCarry, 4000)
-                end
-            end)
-        end)
     end
 end)
 
@@ -154,46 +114,17 @@ RegisterServerEvent("vorp:chatSuggestion")
 AddEventHandler("vorp:chatSuggestion",function()
     local _source = source
 
-    TriggerClientEvent("chat:addSuggestion",_source, "/setgroup", "VORPcore command set group to user.",{
-        {name = "Id", help='player ID'},
-        {name = "Group", help='Group Name'},
-        
-    })
-
-    TriggerClientEvent("chat:addSuggestion",_source, "/setjob", "VORPcore command set job to user.",{
-        {name = "Id", help='player ID'},{name = "Job", help='Job Name'},{name = "Rank", help=' player Rank'},
-    })
---[[
-    TriggerClientEvent("chat:addSuggestion",_source, "/addmoney", "VORPcore command add money/gold to user",{
-        {name = "Id", help='player ID'},
-        {name = "Type", help='Money 0 Gold 1'},
-        {name = "Quantity", help='Quantity to give'},
-    })
-]]
-    
-    TriggerClientEvent("chat:addSuggestion", _source, "/delmoney", "VORPcore command remove money/gold from user",{
-        {name = "Id", help='player ID'},
-        {name = "Type", help='Money 0 Gold 1'},
-        {name = "Quantity", help='Quantity to remove from User'},    
-    })
     
 
     TriggerClientEvent("chat:addSuggestion",_source, "/addwhitelist", "VORPcore command Example: /addwhitelist 11000010c8aa16e",{
         {name = "AddWhiteList", help=' steam ID like this > 11000010c8aa16e'},               
     })
           
-    TriggerClientEvent("chat:addSuggestion",_source, "/additems", " VORPcore command to give items.",{
-        {name = "Id", help='player ID'},
-        {name = "Item", help='item name'},
-        {name = "Quantity", help='amount of items to give'},
-    })
+
 
     TriggerClientEvent("chat:addSuggestion",_source, "/revive", " VORPcore command to revive.",{
         {name = "Id", help='player ID'},
     })
-
-    --[[TriggerClientEvent("chat:addSuggestion",_source, "/tpm", " VORPcore command  teleport to marker set on the map.",{
-    })]]
 
     TriggerClientEvent("chat:addSuggestion",_source, "/delwagon", " VORPcore command to delete wagons.",{
     })

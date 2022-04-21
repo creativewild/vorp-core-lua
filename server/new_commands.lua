@@ -99,3 +99,41 @@ AddCommand('delmoney', 'VORPcore command remove money/gold from user', { {name =
 end, 'admin')
 
 
+AddCommand('cmd', 'detail', { help }, true, function(source, args)
+    local _source = source
+    
+end, 'admin')
+
+AddCommand('additems', 'VORPcore command to give items', { {name = "Id", help='player ID'}, {name = "Item", help='item name'}, {name = "Quantity", help='amount of items to give'} }, true, function(source, args)
+    local _source = source
+    VORP = exports.vorp_inventory:vorp_inventoryApi()
+    local id, item, count =  args[1], args[2], args[3]
+    VORP.addItem(_source, item, count)
+end, 'admin')
+
+AddCommand('addweapons', 'Give a weapon', { {name = "Id", help='player ID'}, {name = "Weapon", help='Weapon Name. ex.: WEAPON_BOW'} }, true, function(source, args)
+    VORP = exports.vorp_inventory:vorp_inventoryApi()
+    local id, weaponHash = tonumber(args[1]), tostring(args[2])
+
+    TriggerEvent("vorpCore:canCarryWeapons", id, 1, function(canCarry)
+        if canCarry then
+            VORP.createWeapon(id, weaponHash)
+        else
+            TriggerClientEvent("vorp:Tip", source, Config.Langs.cantCarry, 4000)
+        end
+    end)    
+end, 'admin')
+
+AddCommand('revive', 'VORPcore command to revive.', { {name = "Id", help='player ID'} }, true, function(source, args)
+    local id =  args[1]
+    TriggerClientEvent('vorp:resurrectPlayer', id)
+end, 'admin')
+
+AddCommand('delwagon', 'VORPcore command to delete wagons.', { help }, true, function(source, args)
+    local _source = source
+    TriggerClientEvent("vorp:delWagon",_source)
+end, 'admin')
+
+
+
+
