@@ -47,6 +47,9 @@ end)
 AddEventHandler('vorp:setJob', function(player, job, jobgrade)
     local sid = GetSteamID(player)
 
+    print(job)
+    print(jobgrade)
+
     if _users[sid] ~= nil then
         _users[sid].GetUsedCharacter().setJob(job)
         _users[sid].GetUsedCharacter().setJobGrade(jobgrade)

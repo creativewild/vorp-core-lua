@@ -57,6 +57,8 @@ AddCommand('tpm', 'TP To Marker', {}, false, function(source)
     TriggerClientEvent('vorp:teleportWayPoint', _source)
 end, 'mod')
 
+
+
 AddCommand('setgroup', 'VORPcore command set group to user.', { {name = "Id", help='player ID'}, {name = "Group", help='Group Name'} }, true, function(source, args)
     local _source = source
     local target, newgroup = args[1], args[2]
@@ -67,6 +69,9 @@ AddCommand('setgroup', 'VORPcore command set group to user.', { {name = "Id", he
     TriggerEvent("vorp:setGroup", target, newgroup)
     TriggerClientEvent("vorp:Tip", _source, string.format("Target %s have group %s", target, newgroup), 4000)
 end, 'admin')
+
+
+
 
 AddCommand('setjob', 'VORPcore command set job to user.', { {name = "Id", help='player ID'},{name = "Job", help='Job Name'},{name = "Rank", help=' player Rank'} }, true, function(source, args)
     local _source = source
@@ -98,11 +103,11 @@ AddCommand('delmoney', 'VORPcore command remove money/gold from user', { {name =
     TriggerClientEvent("vorp:Tip", _source, string.format("Removed %s to %s", target, quantity), 4000)
 end, 'admin')
 
-
+--[[
 AddCommand('cmd', 'detail', { help }, true, function(source, args)
-    local _source = source
-    
+    local _source = source  
 end, 'admin')
+]]
 
 AddCommand('additems', 'VORPcore command to give items', { {name = "Id", help='player ID'}, {name = "Item", help='item name'}, {name = "Quantity", help='amount of items to give'} }, true, function(source, args)
     local _source = source
@@ -130,8 +135,12 @@ AddCommand('revive', 'VORPcore command to revive.', { {name = "Id", help='player
 end, 'admin')
 
 AddCommand('delwagon', 'VORPcore command to delete wagons.', { help }, true, function(source, args)
-    local _source = source
-    TriggerClientEvent("vorp:delWagon",_source)
+    TriggerClientEvent("vorp:delWagon",source)
+end, 'admin')
+
+
+AddCommand('delhorse', 'VORPcore command to delete horses.', {}, true, function(source, args)
+    TriggerClientEvent("vorp:delHorse",source)
 end, 'admin')
 
 

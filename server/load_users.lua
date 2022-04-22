@@ -19,7 +19,6 @@ function LoadUser(source, setKickReason, deferrals, identifier, license)
             deferrals.done(Config.Langs["BannedUser"])
             setKickReason(Config.Langs["BannedUser"])
         end
-
         _users[identifier] = User(source, identifier, user["group"], user["warnings"], license)
 
         _users[identifier].LoadCharacters()
@@ -28,7 +27,6 @@ function LoadUser(source, setKickReason, deferrals, identifier, license)
     else
         --New User
         exports.ghmattimysql:executeSync("INSERT INTO users VALUES(?,'user',0,0)", {identifier})
-
         _users[identifier] = User(source, identifier, "user", 0, license)
         deferrals.done()
     end

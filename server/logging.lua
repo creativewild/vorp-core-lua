@@ -42,7 +42,7 @@ function DoesLogExist(cb)
 			end
 			cb(exists)
 
-			log(' -- Vorp Core log started. --')
+			Log(' -- Vorp Core log started. --')
 
 			return
 		end)
