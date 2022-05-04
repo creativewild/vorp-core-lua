@@ -76,3 +76,10 @@ Now you are ready!
 
 ## Credits
 [VORP-Core](https://github.com/VORPCORE/VORP-Core/releases) This script was based on this core.
+
+Adding commands
+```
+AddCommand('cmd', 'detail', { help }, true, function(source, args)
+    local _source = source  
+end, 'admin')
+```

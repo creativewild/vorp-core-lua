@@ -59,8 +59,8 @@ Config = {
   ------------------------- SHOW OR HIDE UI's ---------------------------------
 
   HideUi          = true, --show or hide the UI includes  gold cash ID and level bar  the cash gold ID are now being displayed in the inventory. you can disable this one if yo ulike it more
-  mapTypeOnFoot   = 1, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on foot
-  mapTypeOnMount  = 1,-- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on horse
+  mapTypeOnFoot   = 2, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on foot
+  mapTypeOnMount  = 2,-- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on horse
   enableTypeRadar = false, --- if true the above will work, if false players can choose their radar type in the game settings.
 
   ------------------------------------------------------------------------------

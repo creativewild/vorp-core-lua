@@ -75,7 +75,7 @@ end, 'admin')
 
 AddCommand('setjob', 'VORPcore command set job to user.', { {name = "Id", help='player ID'},{name = "Job", help='Job Name'},{name = "Rank", help=' player Rank'} }, true, function(source, args)
     local _source = source
-    local target, newjob, jobgrade = tonumber(args[1]), args[2], args[3]
+    local target, newjob, jobgrade = tonumber(args[1]), args[2], tonumber(args[3])
     if newjob == nil or newjob == '' then
         if jobgrade == nil or jobgrade == '' then
             TriggerClientEvent("vorp:Tip", source, "ERROR: Use Correct Sintaxis", 4000)
@@ -103,12 +103,6 @@ AddCommand('delmoney', 'VORPcore command remove money/gold from user', { {name =
     TriggerClientEvent("vorp:Tip", _source, string.format("Removed %s to %s", target, quantity), 4000)
 end, 'admin')
 
---[[
-AddCommand('cmd', 'detail', { help }, true, function(source, args)
-    local _source = source  
-end, 'admin')
-]]
-
 AddCommand('additems', 'VORPcore command to give items', { {name = "Id", help='player ID'}, {name = "Item", help='item name'}, {name = "Quantity", help='amount of items to give'} }, true, function(source, args)
     local _source = source
     VORP = exports.vorp_inventory:vorp_inventoryApi()
@@ -134,14 +128,10 @@ AddCommand('revive', 'VORPcore command to revive.', { {name = "Id", help='player
     TriggerClientEvent('vorp:resurrectPlayer', id)
 end, 'admin')
 
-AddCommand('delwagon', 'VORPcore command to delete wagons.', { help }, true, function(source, args)
+AddCommand('delwagon', 'VORPcore command to delete wagons.', { }, true, function(source, args)
     TriggerClientEvent("vorp:delWagon",source)
 end, 'admin')
 
-
-AddCommand('delhorse', 'VORPcore command to delete horses.', {}, true, function(source, args)
-    TriggerClientEvent("vorp:delHorse",source)
-end, 'admin')
 
 
 

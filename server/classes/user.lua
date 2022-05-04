@@ -32,7 +32,7 @@ function User(source, identifier, group, playerwarnings, license)
     self.Group = function(value)
         if value ~= nil then
             self._group = value
-            exports.ghmattimysql:execute("UPDATE users SET `group` = ? WHERE `identifier` = ?", { self._group, self.Identifier()})
+            exports.ghmattimysql:execute("UPDATE users SET `group` = ? WHERE `identifier` = ?", { self._group, self.Identifier() })
         end
 
         return self._group
@@ -41,7 +41,7 @@ function User(source, identifier, group, playerwarnings, license)
     self.Playerwarnings = function(value)
         if value ~= nil then
             self._playerwarnings = value
-            exports.ghmattimysql:execute("UPDATE users SET `warnings` = ? WHERE `identifier` = ?", { self._playerwarnings, self.Identifier()})
+            exports.ghmattimysql:execute("UPDATE users SET `warnings` = ? WHERE `identifier` = ?", { self._playerwarnings, self.Identifier() })
         end
 
         return self._playerwarnings
@@ -121,14 +121,13 @@ function User(source, identifier, group, playerwarnings, license)
     end
 
     self.LoadCharacters = function()
-        exports.ghmattimysql:execute("SELECT * FROM characters WHERE identifier =?", {self._identifier}, function(usercharacters)
+        exports.ghmattimysql:execute("SELECT * FROM characters WHERE identifier =?", { self._identifier }, function(usercharacters)
             self.Numofcharacters(#usercharacters)
 
             if #usercharacters > 0 then
                 for k,character in ipairs(usercharacters) do
                     if character['identifier'] ~= nil then
                         local newCharacter = Character(self.source, self._identifier, character["charidentifier"], character["group"], character["job"], character["jobgrade"], character["firstname"], character["lastname"], character["inventory"], character["status"], character["coords"], character["money"], character["gold"], character["rol"], character["xp"], character["isdead"], character["skinPlayer"], character["compPlayer"])
-                        print(character["status"])
                         self._usercharacters[newCharacter.CharIdentifier()] = newCharacter
                         self.usedCharacterId = newCharacter.CharIdentifier()
                     end

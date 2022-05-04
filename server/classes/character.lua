@@ -52,16 +52,16 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
     self.Skin = function(value)
         if value ~= nil then
             self.skin = value
-            exports.ghmattimysql:execute("UPDATE characters SET `skinPlayer` = ? WHERE `identifier` = ? AND `charidentifier` = ?", {value, self.Identifier(), self.CharIdentifier()})
+            exports.ghmattimysql:execute("UPDATE characters SET `skinPlayer` = ? WHERE `identifier` = ? AND `charidentifier` = ?", { value, self.Identifier(), self.CharIdentifier() })
         end
 
         return self.skin
     end
-    
+
     self.Comps = function(value)
         if value ~= nil then
             self.comps = value
-            exports.ghmattimysql:execute("UPDATE characters SET `compPlayer` = ? WHERE `identifier` = ? AND `charidentifier` = ?", {value, self.Identifier(), self.CharIdentifier()})
+            exports.ghmattimysql:execute("UPDATE characters SET `compPlayer` = ? WHERE `identifier` = ? AND `charidentifier` = ?", { value, self.Identifier(), self.CharIdentifier() })
         end
 
         return self.comps
@@ -225,6 +225,10 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
         self.Job(newjob)
     end
 
+    self.setJobGrade = function(jobgrade)
+        self.Jobgrade(jobgrade)
+    end
+
     self.setGroup = function(newgroup)
         self.Group(newgroup)
     end
@@ -234,22 +238,22 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
     end
 
     self.SaveNewCharacterInDb = function(cb)
-        exports.ghmattimysql:execute("INSERT INTO characters(`identifier`,`group`,`money`,`gold`,`rol`,`xp`,`inventory`,`job`,`status`,`firstname`,`lastname`,`skinPlayer`,`compPlayer`,`jobgrade`,`coords`,`isdead`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", {self.Identifier(), self.Group(), self.Money(), self.Gold(), self.Rol(), self.Xp(), self.Inventory(), self.Job(), self.Status(), self.Firstname(), self.Lastname(), self.Skin(), self.Comps(), self.Jobgrade(), self.Coords(), self.IsDead()}, function(character)
+        exports.ghmattimysql:execute("INSERT INTO characters(`identifier`,`group`,`money`,`gold`,`rol`,`xp`,`inventory`,`job`,`status`,`firstname`,`lastname`,`skinPlayer`,`compPlayer`,`jobgrade`,`coords`,`isdead`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", { self.Identifier(), self.Group(), self.Money(), self.Gold(), self.Rol(), self.Xp(), self.Inventory(), self.Job(), self.Status(), self.Firstname(), self.Lastname(), self.Skin(), self.Comps(), self.Jobgrade(), self.Coords(), self.IsDead() }, function(character)
             cb(character.insertId)
         end)
     end
 
     self.DeleteCharacter = function()
-        exports.ghmattimysql:execute("DELETE FROM characters WHERE `identifier` = ? AND `charidentifier` = ? ", {self.Identifier(), self.CharIdentifier()})
+        exports.ghmattimysql:execute("DELETE FROM characters WHERE `identifier` = ? AND `charidentifier` = ? ", { self.Identifier(), self.CharIdentifier() })
     end
 
     self.SaveCharacterCoords = function(coords)
         self.Coords(coords)
-        exports.ghmattimysql:execute("UPDATE characters SET `coords` = ? WHERE `identifier` = ? AND `charidentifier` = ?", {self.Coords(), self.Identifier(), self.CharIdentifier()})
+        exports.ghmattimysql:execute("UPDATE characters SET `coords` = ? WHERE `identifier` = ? AND `charidentifier` = ?", { self.Coords(), self.Identifier(), self.CharIdentifier() })
     end
 
     self.SaveCharacterInDb = function()
-        exports.ghmattimysql:execute("UPDATE characters SET `group` = ?,`money` = ?,`gold` = ?,`rol` = ?,`xp` = ?,`job` = ?, `status` = ?,`firstname` = ?, `lastname` = ?, `jobgrade` = ?,`coords` = ?,`isdead` = ? WHERE `identifier` = ? AND `charidentifier` = ?", {self.Group(), self.Money(), self.Gold(), self.Rol(), self.Xp(), self.Job(), self.Status(), self.Firstname(), self.Lastname(), self.Jobgrade(), self.Coords(), self.IsDead(), tostring(self.Identifier()), self.CharIdentifier()})
+        exports.ghmattimysql:execute("UPDATE characters SET `group` = ?,`money` = ?,`gold` = ?,`rol` = ?,`xp` = ?,`job` = ?, `status` = ?,`firstname` = ?, `lastname` = ?, `jobgrade` = ?,`coords` = ?,`isdead` = ? WHERE `identifier` = ? AND `charidentifier` = ?", { self.Group(), self.Money(), self.Gold(), self.Rol(), self.Xp(), self.Job(), self.Status(), self.Firstname(), self.Lastname(), self.Jobgrade(), self.Coords(), self.IsDead(), tostring(self.Identifier()), self.CharIdentifier() })
     end
 
     return self
