@@ -43,7 +43,7 @@ Config = {
   Whitelist     =  false, -- LEAVE TO FALSE IT'S NOT WORKING
   AllowWhitelistAutoUpdate =  false,
   MaxCharacters =  5, --MAX ALLOWED TO BE CREATED
-  Permissions = {'superadmin', 'admin', 'mod'},
+  Permissions = {'admin', 'mod', 'user'},
 
   ------------------------------------------------------------------------------
   ------------------------------ WEBHOOKS --------------------------------------

@@ -32,15 +32,12 @@ function GetIdentifier(source, idtype)
     return nil
 end
 
-
-
 function AddPermission(source, permission)
     local src = source
     local license = GetIdentifier(src, 'license')
     ExecuteCommand(('add_principal identifier.%s vorp.%s'):format(license, permission))
     RefreshCommands(src)
 end
-
 
 function RemovePermission(source, permission)
     local src = source
@@ -60,13 +57,11 @@ function RemovePermission(source, permission)
     end
 end
 
-
 function HasPermission(source, permission)
     local src = source
     if IsPlayerAceAllowed(src, permission) then return true end
     return false
 end
-
 
 function GetPermissions(source)
     local src = source
