@@ -4,32 +4,7 @@
 
 Config = {
 
-  log = {
-    file = {
-      enabled = true,
-      debugInfo = false
-    },
-    discord = {
-      username = "VORP Logs",
-      webhooks = {
-        ["default"] = "https://discord.com/api/webhooks/964861207498604626/S5iSSdps_AfQ9fCvOwqKKkSloVoUCDgEsFlmncgDgcgj4C5o2SFDr-e1qwfIhze_QFZJ",
-        ["admincommands"] = "",
-      },
-      colors = {
-        ["default"] = 16711680,
-        ["red"] = 16711680,
-        ["blue"] = 25087,
-        ["turqois"] = 62207,
-        ["lightgreen"] = 65309,	
-        ["green"] = 762640,
-        ["orange"] = 16743168,
-        ["yellow"] = 15335168,
-        ["pink"] = 16711900,
-        ["white"] = 16777215,
-        ["black"] = 0,
-      }
-    }
-  },
+  defaultlang = "en",
 
   ----------------------------------------------------------------------------
   ----------------------- STARTING POINT -------------------------------------
@@ -141,30 +116,34 @@ Config = {
 
 
   ---------------------------------------------------------------------------------------
-  ------------------------------- TRANSLATE ---------------------------------------------
-  Langs = {
-    IsConnected        = "🚫 Duplicated account connected (steam | rockstar)",
-    NoSteam            = "🚫 You have to have Steam open, please open Steam & restart RedM",
-    NoInWhitelist      = "🚫 You are not in the Whitelist",
-    NoPermissions      = "You don't have enough permissions",
-    CheckingIdentifier = "Checking Identifiers",
-    LoadingUser        = "Loading User",
-    BannedUser         = "You Are Banned",
-    TitleOnDead        = "Do /alertdoctor in chat to request doctors aid",
-    SubTitleOnDead     = "You can respawn in %s seconds",
-    RespawnIn          = "You can respawn in ",
-    SecondsMove        = " seconds",
-    YouAreCarried      = "You are being carried by a person",
-    VoiceRangeChanged  = "Voice chat range changed to %s meters",
-    promptLabel        = "Respawn",  -- prompt label.   
-    prompt             = "Press",  -- prompt group label 
-    wayPoint           = "VORP: You need to set a waypoint first!",
-    mustBeSeated       = "VORP: You must be in the driver's seat!",
-    wagonInFront       = "VORP: You must be seated or near a wagon to delete it!",
-    cantCarry          = "VORP: Can't carry more weapons!",
+  --------------------------------- LOGGING ---------------------------------------------
+
+  log = {
+    file = {
+      enabled = true,
+      debugInfo = false
+    },
+    discord = {
+      username = "VORP Logs",
+      webhooks = {
+        ["default"] = "https://discord.com/api/webhooks/964861207498604626/S5iSSdps_AfQ9fCvOwqKKkSloVoUCDgEsFlmncgDgcgj4C5o2SFDr-e1qwfIhze_QFZJ",
+        ["admincommands"] = "",
+      },
+      colors = {
+        ["default"] = 16711680,
+        ["red"] = 16711680,
+        ["blue"] = 25087,
+        ["turqois"] = 62207,
+        ["lightgreen"] = 65309,	
+        ["green"] = 762640,
+        ["orange"] = 16743168,
+        ["yellow"] = 15335168,
+        ["pink"] = 16711900,
+        ["white"] = 16777215,
+        ["black"] = 0,
+      }
+    }
   },
-
-
 
 }
 
